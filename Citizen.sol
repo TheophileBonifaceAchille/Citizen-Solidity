@@ -101,10 +101,11 @@ contract Citizen {
 
     function addJudge(address _addr) public onlySage {
         citoyen[_addr].voteJudge += 1;
-        if (citoyen[_addr].voteJudge > 1) {
+        if (citoyen[_addr].voteJudge > 2) {
             citoyen[_addr].isJudge = true;
         }
     }
+   
 
     /// @dev Option court
     string
