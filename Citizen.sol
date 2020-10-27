@@ -99,6 +99,17 @@ contract Citizen {
     /// @dev enum pain
     enum Peines {legere, lourde, grave, crime}
 
+    function addJudge(address _addr) public onlySage {
+        citoyen[_addr].voteJudge += 1;
+        if (citoyen[_addr].voteJudge > 1) {
+            citoyen[_addr].isJudge = true;
+        }
+    }
+
+    /// @dev Option court
+    string
+        public sentence = "0 => -5 Citizen, 1 => -10 Citizen, 2 => -100 Citizen, 3 => banned for 10 years, and wallet = 0";
+
     /// @dev court of pain
     function peinesCitizen(address _addr, Peines _peines) public onlyJudge {
         (_addr != etat, "etat cannot be judgement !");
